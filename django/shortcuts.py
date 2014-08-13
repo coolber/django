@@ -121,22 +121,7 @@ def get_list_or_404(klass, *args, **kwargs):
     the list is empty.
 
     klass may be a Model, Manager, or QuerySet object. All other passed
-    arguments and keyword arguments are used in the filter() query.
-    """
-    queryset = _get_queryset(klass)
-    obj_list = list(queryset.filter(*args, **kwargs))
-    if not obj_list:
-        raise Http404('No %s matches the given query.' % queryset.model._meta.object_name)
-    return obj_list
-
-
-def resolve_url(to, *args, **kwargs):
-    """
-    Return a URL appropriate for the arguments passed.
-
-    The arguments could be:
-
-        * A model: the model's `get_absolute_url()` function will be called.
+    arguments and keyword arguments are used in the filter() query.rw
 
         * A view name, possibly with arguments: `urlresolvers.reverse()` will
           be used to reverse-resolve the name.
